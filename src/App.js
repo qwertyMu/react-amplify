@@ -44,6 +44,28 @@ const addTodo = `mutation createTodo($name:String! $description: String! $priori
   }
 }`;
 
+const updateTodo = `mutation updateTodo($id:ID! $name:String! $description: String! $priority: String) {
+  updateTodo(input:{
+    id:$id
+    name:$name
+    description:$description
+    priority:$priority
+  }){
+    id
+    name
+    description
+    priority
+  }
+}`;
+
+const deleteTodo = `mutation deleteTodo($id:ID!) {
+  deleteTodo(input:{
+    id:$id
+  }){
+    id
+  }
+}`;
+
 class App extends Component {
 
   uploadFile = (evt) => {
@@ -89,6 +111,38 @@ class App extends Component {
     console.log(JSON.stringify(newTodo));
   };
 
+  updateMutation = async () => {
+    const todoDetails = {
+      id: 'fb607d60-820c-48ef-b09c-bad7e90aee04',
+      name: "Updated name",
+      description: "My updated description!",
+      priority: "Medium"
+    };
+
+    const updatedTodo = 
+    await API.graphql({ 
+      query: updateTodo, 
+      variables: todoDetails,
+      authMode: 'API_KEY'
+    });
+    console.log(JSON.stringify(updatedTodo));
+  };
+
+  deleteMutation = async () => {
+    const todoDetails = {
+      id: 'f70d7c55-9a41-45e5-a546-8d101c299c58',
+    };
+    
+    const deletedTodo = 
+    await API.graphql({ 
+      query: deleteTodo, 
+      variables: todoDetails,
+      authMode: 'API_KEY'
+    });
+    console.log(todoDetails + ' - Deleted')
+  };
+
+
   listQuery = async () => {
     console.log("listing todos");
     const allTodos = 
@@ -98,7 +152,7 @@ class App extends Component {
     });
     console.log(JSON.stringify(allTodos));
   };
-
+  
   render() {
     return (
       <div className="App">
@@ -125,6 +179,8 @@ class App extends Component {
                   <Button variant='contained' onClick={this.listQuery}>GraphQL List Query</Button>
                   <Button variant='contained' onClick={this.todoMutation}>GraphQL Todo Mutation</Button>
                   <Button variant='contained' onClick={this.recordEvent}>Record Event</Button>
+                  <Button variant='contained' onClick={this.updateMutation}>Update</Button>
+                  <Button variant='contained' onClick={this.deleteMutation}>Delete</Button>
                 </Item>
               </Paper>
             </Grid>
