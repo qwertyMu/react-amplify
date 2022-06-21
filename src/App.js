@@ -1,8 +1,24 @@
 import React, { Component } from "react";
 import "./App.css";
+import PrimarySearchAppBar from "./appBar";
+import ChatTable from "./chatTable";
+import CallsTable from "./callsTable";
+import ContactsTable from "./contactsTable";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react-v1";
 import { API, graphqlOperation, Analytics, Auth, Storage } from "aws-amplify";
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
 
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#f5f2f2',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+}));
 
 const listTodos = `query listTodos {
   listTodos{
@@ -82,13 +98,63 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <PrimarySearchAppBar />
+        <Box margin={5} ml='2%' sx={{ flexGrow: 3 }}>
+          <Grid container spacing={3}>
+            
+            <Grid item xs={12}>
+              <Paper elevation={8}>
+                <Item>
+                  <p> Click a button </p>
+                  <Button variant='contained' onClick={this.listQuery}>GraphQL List Query</Button>
+                  <Button variant='contained' onClick={this.todoMutation}>GraphQL Todo Mutation</Button>
+                  <Button variant='contained' onClick={this.recordEvent}>Record Event</Button>
+                </Item>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12}>
+              <Paper elevation={8}>
+                <Item>
+                  <Button variant="contained" component="label">
+                    Upload a Report
+                    <input type="file" hidden onChange={this.uploadFile}/>  
+                  </Button>
+                </Item>
+                </Paper>
+            </Grid>
+            
+            <Grid item xs={12}>
+              <Paper elevation={8}>
+                <Item>
+                  <h2>Contacts</h2>
+                  <ContactsTable />
+                </Item>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Paper elevation={8}>
+                <Item>
+                  <h2>Chat</h2>
+                  <ChatTable />
+                </Item>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Paper elevation={8}>
+                <Item>
+                  <h2>Calls</h2>
+                  <CallsTable />
+                </Item>
+              </Paper>
+            </Grid>
+            
+          </Grid>
+        </Box>
         <AmplifySignOut />
-        <p> Click a button </p>
-        <button onClick={this.listQuery}>GraphQL List Query</button>
-        <button onClick={this.todoMutation}>GraphQL Todo Mutation</button>
-        <button onClick={this.recordEvent}>Record Event</button>
-        <p> Pick a file</p>
-        <input type="file" onChange={this.uploadFile} />  
       </div>
     );
   }
