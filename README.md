@@ -1,8 +1,12 @@
-# Getting Started with Create React App
+## Pull the project locally.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+git clone https://github.com/qwertyMu/react-amplify.git
 
-## Available Scripts
+## Check the Amplify Config
+
+This project is designed to be deployed using the AWS Amplify CI/CD pipeline. This means that when you configure your Amplify instance and connect your local git repo to your remote and then your GitHub account to Amplify, you can push your code changes locally and they will be deployed into the live environment using Amplify. 
+
+## Starting your server at localhost
 
 In the project directory, you can run:
 
