@@ -26,18 +26,21 @@ const listTodos = `query listTodos {
       id
       name
       description
+      priority
     }
   }
 }`;
 
-const addTodo = `mutation createTodo($name:String! $description: String!) {
+const addTodo = `mutation createTodo($name:String! $description: String! $priority: String) {
   createTodo(input:{
     name:$name
     description:$description
+    priority:$priority
   }){
     id
     name
     description
+    priority
   }
 }`;
 
@@ -60,6 +63,7 @@ class App extends Component {
       console.log("error getting user: ", err);
     }
   }
+
   recordEvent = () => {
     Analytics.record({
       name: "My test event",
@@ -69,11 +73,11 @@ class App extends Component {
     });
   };
 
-
   todoMutation = async () => {
     const todoDetails = {
       name: "Party tonight!",
-      description: "Amplify CLI rocks!"
+      description: "Amplify CLI rocks!",
+      priority: "High"
     };
 
     const newTodo = 
@@ -82,7 +86,7 @@ class App extends Component {
       variables: todoDetails,
       authMode: 'API_KEY'
     });
-    alert(JSON.stringify(newTodo));
+    console.log(JSON.stringify(newTodo));
   };
 
   listQuery = async () => {
@@ -92,7 +96,7 @@ class App extends Component {
       query: listTodos,
       authMode: 'API_KEY'
     });
-    alert(JSON.stringify(allTodos));
+    console.log(JSON.stringify(allTodos));
   };
 
   render() {
@@ -106,23 +110,23 @@ class App extends Component {
             <Grid item xs={12}>
               <Paper elevation={8}>
                 <Item>
-                  <p> Click a button </p>
-                  <Button variant='contained' onClick={this.listQuery}>GraphQL List Query</Button>
-                  <Button variant='contained' onClick={this.todoMutation}>GraphQL Todo Mutation</Button>
-                  <Button variant='contained' onClick={this.recordEvent}>Record Event</Button>
-                </Item>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={12}>
-              <Paper elevation={8}>
-                <Item>
                   <Button variant="contained" component="label">
                     Upload a Report
                     <input type="file" hidden onChange={this.uploadFile}/>  
                   </Button>
                 </Item>
                 </Paper>
+            </Grid>
+
+            <Grid item xs={12}>
+              <Paper elevation={8}>
+                <Item>
+                  <p> Click a button </p>
+                  <Button variant='contained' onClick={this.listQuery}>GraphQL List Query</Button>
+                  <Button variant='contained' onClick={this.todoMutation}>GraphQL Todo Mutation</Button>
+                  <Button variant='contained' onClick={this.recordEvent}>Record Event</Button>
+                </Item>
+              </Paper>
             </Grid>
             
             <Grid item xs={12}>

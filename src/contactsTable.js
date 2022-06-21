@@ -22,19 +22,20 @@ function createData(name, phoneNumber, emailAddress, notes, source, exhibit) {
     emailAddress,
     notes,
     source,
+    exhibit,
     history: [
       {
         date: '2020-01-05',
         customerId: 'MET Police',
         customerUser: 'DC Scott Example',
-        exhibitNumber: exhibit,
+        reasonForSearch: 'Operation Illuminative',
         exhibitDownloaded: 1,
       },
       {
         date: '2020-01-02',
         customerId: 'South Wales Police',
         customerUser: 'IO Bernie Smith',
-        exhibitNumber: exhibit,
+        reasonForSearch: 'LEAD 45/2022',
         exhibitDownloaded: 0,
       },
     ],
@@ -64,9 +65,10 @@ function Row(props) {
         <TableCell align="right">{row.emailAddress}</TableCell>
         <TableCell align="right">{row.notes}</TableCell>
         <TableCell align="right">{row.source}</TableCell>
+        <TableCell align="right">{row.exhibit}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ backgroundColor: '#f5f2f2', paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ backgroundColor: '#f5f2f2', paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
@@ -75,10 +77,10 @@ function Row(props) {
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell><AccessTimeIcon fontSize='sm'/>Last Hit</TableCell>
+                    <TableCell><AccessTimeIcon fontSize='sm'/>Latest Hits</TableCell>
                     <TableCell>Force</TableCell>
                     <TableCell align="right">Officer</TableCell>
-                    <TableCell align="right">Exhibit Number</TableCell>
+                    <TableCell align="right">Reason for Search</TableCell>
                     <TableCell align="right">Exhibit Downloaded</TableCell>
                   </TableRow>
                 </TableHead>
@@ -90,7 +92,7 @@ function Row(props) {
                       </TableCell>
                       <TableCell>{historyRow.customerId}</TableCell>
                       <TableCell align="right">{historyRow.customerUser}</TableCell>
-                      <TableCell align="right">{historyRow.exhibitNumber}</TableCell>
+                      <TableCell align="right">{historyRow.reasonForSearch}</TableCell>
                       <TableCell align="right">{historyRow.exhibitDownloaded}</TableCell>
                     </TableRow>
                   ))}
@@ -109,10 +111,11 @@ Row.propTypes = {
     phoneNumber: PropTypes.string.isRequired,
     emailAddress: PropTypes.string.isRequired,
     notes: PropTypes.string.isRequired,
+    exhibitNumber: PropTypes.string.isRequired,
     history: PropTypes.arrayOf(
       PropTypes.shape({
         exhibitDownloaded: PropTypes.number.isRequired,
-        exhibitNumber: PropTypes.string.isRequired,
+        reasonForSearch: PropTypes.string.isRequired,
         customerUser: PropTypes.string.isRequired,
         customerId: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
@@ -125,10 +128,10 @@ Row.propTypes = {
 
 const rows = [
   createData('David Smith', '07123456789', 'david.smith@gmail.com', 'David boat guy', 'Staffordshire Police', 'ST/TMP/12'),
-  createData('Breanna Mongomery', '07123456789', 'Breanna.montgomery@gmail.com', 'y G - 4g for £300', 'West Mercia Police', 'ST/TMP/12'),
+  createData('Breanna Mongomery', '07123456789', 'Breanna.montgomery@gmail.com', 'y G - 4g for £300', 'West Mercia Police', 'WM/rMP/15'),
   createData('Eclair Parcel', '07123456789', 'e.parcel@gmail.com', "DONT'T ANSWER", 'MET Police', 'ST/TMP/12'),
-  createData('Cupcake Motezouma', '07123456789', 'moty.cupcake@gmail.com', 'caravan bloke', 'Devon and Somerset Police', 'ST/TMP/12'),
-  createData('Gingerbread Higglestaff', '07123456789', 'gingerstaff@gmail.com', 'Repairs lifts for HSBC', 'Staffordshire Police', 'ST/TMP/12'),
+  createData('Cupcake Motezouma', '07123456789', 'moty.cupcake@gmail.com', 'caravan bloke', 'Devon and Somerset Police', 'SW/LKJ/22'),
+  createData('Gingerbread Higglestaff', '07123456789', 'gingerstaff@gmail.com', 'Repairs lifts for HSBC', 'Staffordshire Police', 'DC/FGH/33'),
 ];
 
 export default function ContactsTable() {
@@ -143,6 +146,7 @@ export default function ContactsTable() {
             <TableCell align="right">Email Address</TableCell>
             <TableCell align="right">Notes</TableCell>
             <TableCell align="right">Source</TableCell>
+            <TableCell align="right">Exhibit Number</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
