@@ -164,7 +164,7 @@ class App extends Component {
             <Grid item xs={12}>
               <Paper elevation={8}>
                 <Item>
-                  <Button variant="contained" component="label">
+                  <Button style={{ backgroundColor: '#b0d6ba' }} variant="contained" component="label">
                     Upload a Report
                     <input type="file" hidden onChange={this.uploadFile}/>  
                   </Button>
@@ -176,11 +176,11 @@ class App extends Component {
               <Paper elevation={8}>
                 <Item>
                   <p> Click a button </p>
-                  <Button variant='contained' onClick={this.listQuery}>GraphQL List Query</Button>
-                  <Button variant='contained' onClick={this.todoMutation}>GraphQL Todo Mutation</Button>
-                  <Button variant='contained' onClick={this.recordEvent}>Record Event</Button>
-                  <Button variant='contained' onClick={this.updateMutation}>Update</Button>
-                  <Button variant='contained' onClick={this.deleteMutation}>Delete</Button>
+                  <Button style={{ backgroundColor: '#b0d6ba' }} variant='contained' onClick={this.listQuery}>GraphQL List Query</Button>
+                  <Button style={{ backgroundColor: '#b0d6ba' }} variant='contained' onClick={this.todoMutation}>GraphQL Todo Mutation</Button>
+                  <Button style={{ backgroundColor: '#b0d6ba' }} variant='contained' onClick={this.recordEvent}>Record Event</Button>
+                  <Button style={{ backgroundColor: '#b0d6ba' }} variant='contained' onClick={this.updateMutation}>Update</Button>
+                  <Button style={{ backgroundColor: '#b0d6ba' }} variant='contained' onClick={this.deleteMutation}>Delete</Button>
                 </Item>
               </Paper>
             </Grid>

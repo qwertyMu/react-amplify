@@ -8,3 +8,22 @@ type Todo @model {
   description: String!
   priority: String
 }
+
+type Contact @model @searchable {
+  id: ID!
+  name: String!
+  phoneNumber: String!
+  emailAddress: String!
+  notes: String!
+  source: String!
+  exhibit: String!
+  history: [
+    {
+      date: Date!
+      customerId: String!
+      customerUser: String!
+      reasonForSearch: String!
+      exhibitDownloaded: Int!
+    }
+  ]
+}
