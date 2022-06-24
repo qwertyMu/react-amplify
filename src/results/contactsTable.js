@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import { Icon } from '@mui/material';
 
 function createData(name, phoneNumber, emailAddress, notes, source, exhibit) {
   return {
@@ -48,31 +49,31 @@ function Row(props) {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset', color:"white" } }}>
         <TableCell>
           <IconButton
             aria-label="expand row"
             size="small"
             onClick={() => setOpen(!open)}
           >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            {open ? <KeyboardArrowUpIcon style={{color:"white"}} /> : <KeyboardArrowDownIcon style={{color:"white"}} />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
+        <TableCell style={{color:"white"}} component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.phoneNumber}</TableCell>
-        <TableCell align="right">{row.emailAddress}</TableCell>
-        <TableCell align="right">{row.notes}</TableCell>
-        <TableCell align="right">{row.source}</TableCell>
-        <TableCell align="right">{row.exhibit}</TableCell>
+        <TableCell style={{color:"white"}} align="right">{row.phoneNumber}</TableCell>
+        <TableCell style={{color:"white"}} align="right">{row.emailAddress}</TableCell>
+        <TableCell style={{color:"white"}} align="right">{row.notes}</TableCell>
+        <TableCell style={{color:"white"}} align="right">{row.source}</TableCell>
+        <TableCell style={{color:"white"}} align="right">{row.exhibit}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ backgroundColor: '#f5f2f2', paddingBottom: 0, paddingTop: 0 }} colSpan={7}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Typography variant="h6" gutterBottom component="div">
-                More
+               {row.name} - {row.phoneNumber}
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
@@ -136,17 +137,17 @@ const rows = [
 
 export default function ContactsTable() {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{backgroundColor: "#2c3341", borderRadius: "12px"}}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Name</TableCell>
-            <TableCell align="right">Phone Number</TableCell>
-            <TableCell align="right">Email Address</TableCell>
-            <TableCell align="right">Notes</TableCell>
-            <TableCell align="right">Source</TableCell>
-            <TableCell align="right">Exhibit Number</TableCell>
+            <TableCell style={{color:"white"}}>Name</TableCell>
+            <TableCell style={{color:"white"}} align="right">Phone Number</TableCell>
+            <TableCell style={{color:"white"}} align="right">Email Address</TableCell>
+            <TableCell style={{color:"white"}} align="right">Notes</TableCell>
+            <TableCell style={{color:"white"}} align="right">Source</TableCell>
+            <TableCell style={{color:"white"}} align="right">Exhibit Number</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

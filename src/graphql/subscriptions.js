@@ -37,3 +37,123 @@ export const onDeleteTodo = /* GraphQL */ `
     }
   }
 `;
+export const onCreateContact = /* GraphQL */ `
+  subscription OnCreateContact {
+    onCreateContact {
+      id
+      name
+      phoneNumber
+      emailAddress
+      notes
+      source
+      exhibit
+      history {
+        id
+        date
+        customerId
+        customerUser
+        reasonForSearch
+        exhibitDownloaded
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      contactHistoryId
+    }
+  }
+`;
+export const onUpdateContact = /* GraphQL */ `
+  subscription OnUpdateContact {
+    onUpdateContact {
+      id
+      name
+      phoneNumber
+      emailAddress
+      notes
+      source
+      exhibit
+      history {
+        id
+        date
+        customerId
+        customerUser
+        reasonForSearch
+        exhibitDownloaded
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      contactHistoryId
+    }
+  }
+`;
+export const onDeleteContact = /* GraphQL */ `
+  subscription OnDeleteContact {
+    onDeleteContact {
+      id
+      name
+      phoneNumber
+      emailAddress
+      notes
+      source
+      exhibit
+      history {
+        id
+        date
+        customerId
+        customerUser
+        reasonForSearch
+        exhibitDownloaded
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+      contactHistoryId
+    }
+  }
+`;
+export const onCreateHistory = /* GraphQL */ `
+  subscription OnCreateHistory {
+    onCreateHistory {
+      id
+      date
+      customerId
+      customerUser
+      reasonForSearch
+      exhibitDownloaded
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateHistory = /* GraphQL */ `
+  subscription OnUpdateHistory {
+    onUpdateHistory {
+      id
+      date
+      customerId
+      customerUser
+      reasonForSearch
+      exhibitDownloaded
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteHistory = /* GraphQL */ `
+  subscription OnDeleteHistory {
+    onDeleteHistory {
+      id
+      date
+      customerId
+      customerUser
+      reasonForSearch
+      exhibitDownloaded
+      createdAt
+      updatedAt
+    }
+  }
+`;

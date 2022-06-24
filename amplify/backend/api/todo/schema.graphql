@@ -17,13 +17,14 @@ type Contact @model @searchable {
   notes: String!
   source: String!
   exhibit: String!
-  history: [
-    {
-      date: Date!
-      customerId: String!
-      customerUser: String!
-      reasonForSearch: String!
-      exhibitDownloaded: Int!
-    }
-  ]
+  history: History @hasOne
+}
+
+type History @model @searchable {
+  id: ID!
+  date: AWSDate!
+  customerId: String!
+  customerUser: String!
+  reasonForSearch: String!
+  exhibitDownloaded: Int!
 }
