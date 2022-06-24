@@ -2,6 +2,26 @@
 
 git clone https://github.com/qwertyMu/react-amplify.git
 
+## Git Branch Strategy.
+
+main is Production
+dev is feature branch
+
+// To Update your branch - Remember to sudo if you're on MacOS
+git add .
+git commit -m "Whatever you've changed goes here"
+got push origin master 
+
+// To swap branches
+
+git checkout dev
+
+// To Update prod when you're in the main branch locally
+git checkout main
+git pull origin main
+git merge dev
+git push origin main
+
 ## Check the Amplify Config
 
 This project is designed to be deployed using the AWS Amplify CI/CD pipeline. This means that when you configure your Amplify instance and connect your local git repo to your remote and then your GitHub account to Amplify, you can push your code changes locally and they will be deployed into the live environment using Amplify. 

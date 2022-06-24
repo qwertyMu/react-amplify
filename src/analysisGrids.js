@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import UseFormControl from './searchComponent';
 import ContactsTable from './results/contactsTable';
 import PieChart from './results/charts/shareChart';
+import ValueGetterGrid from './xContactsTable';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#2c3341',
@@ -46,7 +47,8 @@ export default function BasicGrid() {
                 <Grid item lg={10}>
                 <Item>
                     Results
-                    <ContactsTable />
+                    {/* <ContactsTable /> */}
+                    <ValueGetterGrid />
                 </Item>
                 </Grid>
                 <Grid item lg={2}>
