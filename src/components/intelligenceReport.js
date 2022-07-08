@@ -1,5 +1,4 @@
 import React, { Component, useState } from "react";
-import "./App.css";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import FormControl from '@mui/material/FormControl';

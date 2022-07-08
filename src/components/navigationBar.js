@@ -15,7 +15,12 @@ import AdbIcon from '@mui/icons-material/Adb';
 import SimpleSlide from './navigationSlideMenu';
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react-v1";
 
-const pages = ['Analysis', 'My Results', 'Audit'];
+const pages = [
+    'Upload',
+    'Analysis', 
+    'My Results', 
+    'Audit'
+];
 const settings = ['Settings', 'Feedback', <AmplifySignOut />];
 
 const ResponsiveAppBar = () => {
@@ -38,7 +43,7 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="sticky" style={{borderRadius: "8px", backgroundColor: "#ec483e"}}>
+    <AppBar position="sticky" style={{borderRadius: "8px", backgroundImage: "linear-gradient(#ec483e, #f05c54)"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <SimpleSlide /> 

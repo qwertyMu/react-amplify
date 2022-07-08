@@ -12,5 +12,7 @@ import awsconfig from './aws-exports';
 
 Amplify.configure(awsconfig);
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+        <App />
+    , document.getElementById('root'));
 serviceWorker.unregister();

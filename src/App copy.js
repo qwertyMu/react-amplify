@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
-import PrimarySearchAppBar from "./appBar";
-import ChatTable from "./chatTable";
-import CallsTable from "./callsTable";
+import PrimarySearchAppBar from "./components/appBar";
+import ChatTable from "./results/tableData/chatTable";
+import CallsTable from "./results/tableData/callsTable";
 import ContactsTable from "./results/contactsTable";
 import { withAuthenticator, AmplifySignOut } from "@aws-amplify/ui-react-v1";
 import { API, graphqlOperation, Analytics, Auth, Storage } from "aws-amplify";
@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-import IntelligenceReport from "./intelligenceReport";
+import IntelligenceReport from "./components/intelligenceReport";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#f5f2f2',
