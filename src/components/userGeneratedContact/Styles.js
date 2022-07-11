@@ -11,7 +11,7 @@ const Styles = {
   
     //ListCard Component
     card: {
-      width: 200,
+      width: 250,
       backgroundImage: "linear-gradient(#ec483e, #f05c54)",
       float: "left",
       margin: "10px",

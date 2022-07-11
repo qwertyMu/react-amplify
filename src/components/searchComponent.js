@@ -3,9 +3,8 @@ import FormControl, { useFormControl } from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Box from '@mui/material/Box';
 import FormHelperText from '@mui/material/FormHelperText';
-import { borderRadius, handleBreakpoints } from '@mui/system';
-import { API, graphqlOperation, or } from 'aws-amplify';
-import { listContacts, searchContacts } from '../graphql/queries';
+import { API } from 'aws-amplify';
+import { searchContacts } from '../graphql/queries';
 import { useState } from 'react';
 import { Button } from '@mui/material';
 import ContactsData from '../results/tableData/xContactsTable';
@@ -44,7 +43,6 @@ export default function UseFormControl() {
       }
     });
     const contactsFromAPI = apiData.data.searchContacts.items;
-    console.log(JSON.stringify("Thing Returned = "+contactsFromAPI))
     await Promise.all(contactsFromAPI.map(async contact => {
       return contact;
     }))
@@ -60,17 +58,11 @@ export default function UseFormControl() {
           'Type your query and hit enter.'
         )
       }
-  
       return 'You can search for Names | Phone Numbers | Email Addresses | Social Media Identifiers | WiFi Access Points etc...';
     }, [focused]);
   
     return <FormHelperText style={{color: "white"}}>{helperText}</FormHelperText>;
   }
-
-  // function handleChange(event){
-  //   console.log("Taking in value:",event.target.value);
-  //   setSearchTerm(event.target.value);
-  // }
 
   return (
     <Box component="form" noValidate autoComplete="off">
@@ -82,30 +74,6 @@ export default function UseFormControl() {
         <MyFormHelperText />
       </FormControl>
       <ContactsData contactsData={contacts}/>
-      {/* <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th>Phone Number</th>
-              <th>Email Address</th>
-              <th>Notes</th>
-              <th>Source</th>
-              <th>Exhibit</th>
-            </tr>
-            {
-              contacts.map(contact => (
-                <tr key={contact.id || contact.name}>
-                  <td>{contact.name}</td>
-                  <td>{contact.phoneNumber}</td>
-                  <td>{contact.emailAddress}</td>
-                  <td>{contact.notes}</td>
-                  <td>{contact.source}</td>
-                  <td>{contact.exhibit}</td>
-                </tr>
-              ))
-            }
-          </tbody>
-        </table> */}
     </Box>
   );
 }
