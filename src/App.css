@@ -41,3 +41,5 @@ html, body, #root, #root>div {
     transform: rotate(360deg);
   }
 }
+
+.target { display: none; }

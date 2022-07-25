@@ -1,10 +1,11 @@
 import React from "react";
 import { request, gql } from "graphql-request";
 import { useQuery } from "react-query";
+import NominalData from "../results/tableData/nominalDataTable";
+import IdentifierDataTable from "../results/tableData/identifierDataTable";
 
 // const endpoint = "https://api.spacex.land/graphql/";
 const endpoint = "http://127.0.0.1:8000/api/graphql";
-
 
 // const QUERY = gql`
 //   {
@@ -22,7 +23,14 @@ const QUERY = gql`
       dateOfBirth
     }
     identifier {
+      id
       value
+      attributions {
+        nominal {
+          name
+          dateOfBirth
+        }
+      }
     }
     interaction {
       type
@@ -48,15 +56,17 @@ export default function GlitchSearchComponent() {
   if (isLoading) return "Loading...";
   if (error) return <pre>{error.message}</pre>;
 
+  const nominalID = data.identifier
+
   return (
     <div>
-      <h1>Results</h1>
-      <ul>
-        Names
-        {data.nominal.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+      <h2>Nominals</h2>
+      <NominalData nominalData={data.nominal} nominalID={nominalID} />
+      <br />
+      <h2>Known Identifiers</h2>
+      <IdentifierDataTable identifierData={data.identifier} />
     </div>
+    
+        
   );
 }

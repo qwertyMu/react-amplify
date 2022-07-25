@@ -28,7 +28,7 @@ const ContactsData = props => {
     })
   });
   return(
-    <DataGrid style={{color: "white"}} rows={rows} columns={columns} autoHeight/>    //DataGrid needs the autoHeight property to render the actual table. 
+    <DataGrid style={{color: "white", backgroundImage: "linear-gradient(#ec483e, #f05c54)"}} rows={rows} columns={columns} autoHeight/>    //DataGrid needs the autoHeight property to render the actual table. 
   )
 };
 
